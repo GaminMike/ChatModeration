@@ -28,7 +28,7 @@ public class Config {
     }
 
     public static void defaultConf(ForgeConfigSpec.Builder config) {
-        defaultConfig = config.comment("List of words to censor:").defineList("Censored words/phrases: ", Collections.emptyList(), s -> s instanceof String);
+        defaultConfig = config.comment("List of words to censor:").defineList("Censored words/phrases: ", Arrays.asList("badword1", "badword2")/*Collections.emptyList()*/, s -> s instanceof String);
     }
 
 }
