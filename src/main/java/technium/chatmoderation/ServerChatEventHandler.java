@@ -6,9 +6,8 @@ import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Pattern;
 
 @Mod.EventBusSubscriber()
 public class ServerChatEventHandler {
@@ -19,7 +18,7 @@ public class ServerChatEventHandler {
     public static void onChatMessageServer(ServerChatEvent event) {
         String finalMessage = event.getMessage();
         for (String word : CENSORED_WORDS) {
-            finalMessage = finalMessage.replaceAll(word, "****");
+            finalMessage = finalMessage.replaceAll(word + "(?i)", "****");
         }
         finalMessage = "<" + event.getUsername() + "> " + finalMessage;
         StringTextComponent finalStringTextComponent = new StringTextComponent(finalMessage);
